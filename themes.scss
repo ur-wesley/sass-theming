@@ -1,0 +1,84 @@
+$bg: 'bg';
+$card-bg: 'card-bg';
+$text: 'text';
+$text-secondary: 'text-secondary';
+$hover: 'hover';
+$border: 'border';
+$shadow: 'shadow';
+$success: 'success';
+$error: 'error';
+$text-btn: 'text-btn';
+
+$light--bg: #eee;
+$light--card-bg: #fff;
+$light--text: #000;
+$light--text-secondary: #333;
+$light--button: #fff;
+$light--hover: rgb(0, 153, 255);
+$light--border: rgb(182, 182, 182);
+$light--shadow: rgb(182, 182, 182);
+$light--success: rgb(0, 187, 0);
+$light--error: rgb(199, 0, 0);
+$light--text-btn: rgb(255, 255, 255);
+
+$dark--bg: #000;
+$dark--card-bg: #333;
+$dark--text: #fff;
+$dark--text-secondary: #eee;
+$dark--button: #000;
+$dark--hover: rgb(0, 153, 255);
+$dark--border: rgb(102, 102, 102);
+$dark--shadow: rgb(102, 102, 102);
+$dark--success: rgb(0, 187, 0);
+$dark--error: rgb(199, 0, 0);
+$dark--text-btn: rgb(255, 255, 255);
+
+//themes
+$themes: (
+ default: (
+  bg: $light--bg,
+  card-bg: $light--card-bg,
+  text: $light--text,
+  text-secondary: $light--text-secondary,
+  hover: $light--hover,
+  border: $light--border,
+  success: $light--success,
+  error: $light--error,
+  text-btn: $light--text-btn
+ ),
+ dark: (
+  bg: $dark--bg,
+  card-bg: $dark--card-bg,
+  text: $dark--text,
+  text-secondary: $dark--text-secondary,
+  hover: $dark--hover,
+  border: $dark--border,
+  success: $dark--success,
+  error: $dark--error,
+  text-btn: $dark--text-btn
+
+ )
+);
+
+@mixin themed() {
+ @each $theme, $map in $themes {
+  .theme--#{$theme} & {
+   $theme-map: () !global;
+   @each $key, $submap in $map {
+    $value: map-get(map-get($themes, $theme), '#{$key}');
+    $theme-map: map-merge(
+     $theme-map,
+     (
+      $key: $value
+     )
+    ) !global;
+   }
+   @content;
+   $theme-map: null !global;
+  }
+ }
+}
+
+@function t($key) {
+ @return map-get($theme-map, $key);
+}

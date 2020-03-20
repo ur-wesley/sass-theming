@@ -1,0 +1,223 @@
+@import 'themes';
+
+body {
+ margin: 0;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ ul {
+  list-style-type: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  li {
+   padding: 10px;
+   @include themed() {
+    color: t($text);
+    background-color: t($card-bg);
+   }
+  }
+ }
+ .spacer {
+  flex-grow: 1;
+ }
+}
+*:focus {
+ outline: none;
+}
+*:hover {
+ transition: all 300ms ease;
+}
+* {
+ transition: all 300ms ease;
+}
+.grid {
+ display: grid;
+ grid-template-columns: 80px 1fr;
+ grid-template-rows: 80px 1fr 40px;
+ grid-column-gap: 0px;
+ grid-row-gap: 0px;
+ width: 100%;
+ height: 100vh;
+}
+
+.header {
+ grid-area: 1 / 1 / 2 / 3;
+ box-shadow: 0 0 20px black;
+ @include themed() {
+  color: t($text);
+  background: t($card-bg);
+ }
+ a {
+  padding: 15px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  text-decoration: none;
+  @include themed() {
+   color: t($text);
+   background: t($bg);
+  }
+ }
+ ul {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  li {
+   margin: 10px;
+  }
+  a:hover {
+   @include themed() {
+    border: 1px solid t($hover);
+   }
+  }
+ }
+}
+
+.sidebar {
+ grid-area: 2 / 1 / 3 / 2;
+ @include themed() {
+  color: t($text);
+  background: t($card-bg);
+ }
+ box-shadow: 4px 2px white;
+ ul {
+  width: 80px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: space-between;
+  .spacer {
+   flex-grow: 1;
+  }
+  li:first-child {
+   margin-top: 100px;
+  }
+  li:last-child {
+   margin-bottom: 100px;
+  }
+  li {
+   margin: 10px;
+  }
+ }
+}
+
+.footer {
+ @include themed() {
+  color: t($text);
+  background: t($card-bg);
+ }
+ grid-area: 3 / 1 / 4 / 3;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.content {
+ @include themed() {
+  color: t($text);
+  background: t($bg);
+ }
+ grid-area: 2 / 2 / 3 / 3;
+ padding: 50px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: flex-start;
+ button,
+ input {
+  margin: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  @include themed() {
+   color: t($text);
+   background: t($card-bg);
+  }
+ }
+ button:hover,
+ input:hover {
+  @include themed() {
+   color: t($text);
+   //    background: t($hover);
+   border: 1px solid t($hover);
+  }
+ }
+ div.input-btn {
+  position: relative;
+  margin: 10px;
+  input {
+   width: 100%;
+   margin: 0;
+   padding: 15px;
+  }
+  button {
+   position: absolute;
+   right: 0px;
+   top: 0;
+   margin: 5px;
+   padding: 10px;
+   @include themed() {
+    color: t($text);
+    background: t($bg);
+   }
+  }
+ }
+ button.success-btn {
+  @include themed() {
+   color: t($text-btn);
+   background-color: t($success);
+  }
+ }
+ button.error-btn {
+  @include themed() {
+   color: t($text-btn);
+   background-color: t($error);
+  }
+ }
+ table {
+  border-collapse: separate;
+  width: 100%;
+  border-spacing: 0 12px;
+  th {
+   text-align: left;
+   padding: 12px;
+  }
+  tr:hover td {
+   @include themed() {
+    box-sizing: border-box;
+    border-top: 2px solid t($hover);
+    border-bottom: 2px solid t($hover);
+   }
+  }
+  tr:hover td:last-child {
+   @include themed() {
+    border-right: 2px solid t($hover);
+   }
+  }
+  tr:hover td:first-child {
+   @include themed() {
+    border-left: 2px solid t($hover);
+   }
+  }
+ }
+ tr td:first-child {
+  border-left: 2px solid transparent;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+ }
+ tr td:last-child {
+  border-left: 2px solid transparent;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+ }
+ td {
+  padding: 6px 12px;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  @include themed() {
+   color: t($text);
+   background-color: t($card-bg);
+  }
+ }
+}

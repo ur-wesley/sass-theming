@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theme Test</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ </head>
+ <body id="theme" class="theme--dark">
+  <div class="grid">
+   <div class="header">
+    <nav>
+     <ul>
+      <li>Brand</li>
+      <li class="spacer"></li>
+      <li>
+       <a href="">
+        Link1
+       </a>
+      </li>
+      <li>
+       <a href="">
+        Link2
+       </a>
+      </li>
+      <li>
+       <a href="">
+        Link3
+       </a>
+      </li>
+      <li class="spacer"></li>
+      <li>
+       <a href="">
+        Link4
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+   <div class="sidebar">
+    <ul>
+     <li>Home</li>
+     <li>Menu1</li>
+     <li>Menu2</li>
+     <li>Menu3</li>
+     <li class="spacer"></li>
+     <li>Menu4</li>
+    </ul>
+   </div>
+   <div class="footer">
+    footer Text
+   </div>
+   <div class="content">
+    <button id="theme-switch" onclick="changeTheme()">Theme Switch</button>
+    <h1>Content</h1>
+    <table>
+     <thead>
+      <th>Spalte1</th>
+      <th>Spalte2</th>
+      <th>Spalte3</th>
+     </thead>
+     <tbody>
+      <tr>
+       <td>Reihe 1, Spalte 1</td>
+       <td>Reihe 1, Spalte 2</td>
+       <td>Reihe 1, Spalte 3</td>
+      </tr>
+      <tr>
+       <td>Reihe 2, Spalte 1</td>
+       <td>Reihe 2, Spalte 2</td>
+       <td>Reihe 2, Spalte 3</td>
+      </tr>
+      <tr>
+       <td>Reihe 3, Spalte 1</td>
+       <td>Reihe 3, Spalte 2</td>
+       <td>Reihe 3, Spalte 3</td>
+      </tr>
+      <tr>
+       <td>Reihe 4, Spalte 1</td>
+       <td>Reihe 4, Spalte 2</td>
+       <td>Reihe 4, Spalte 3</td>
+      </tr>
+     </tbody>
+    </table>
+    <input type="text" placeholder="Input" />
+    <input type="text" placeholder="Disabled Input" disabled />
+    <div class="input-btn">
+     <input type="text" placeholder="Input w/ Button" />
+     <button>GO</button>
+    </div>
+    <button class="primary-btn">Primary Button</button>
+    <button class="success-btn">Success Button</button>
+    <button class="error-btn">Error Button</button>
+    <button disabled>Disabled Button</button>
+
+    <a
+     href="https://medium.com/@katiemctigue/how-to-create-a-dark-mode-in-sass-609f131a3995"
+    >
+     SCSS Theming mithilfe dieses Artikels.
+    </a>
+   </div>
+  </div>
+ </body>
+ <script>
+  document.getElementById('theme').classList.add('theme--default')
+  document.getElementById('theme').classList.remove('theme--dark')
+
+  function changeTheme() {
+   var element = document.getElementById('theme')
+   element.classList.toggle('theme--dark')
+  }
+ </script>
+</html>
